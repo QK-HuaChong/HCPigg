@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+
+            {% for weather in CityWeather %}
+            <div class="row mt-3" id="card-4">
+                {% for city,citywea in weather.items %}
+                    <div class="col">
+                    <div class="weather-card one">
+                        <div class="top" style="background: url(/static/img/card/{{ citywea.5 }}.jpg) no-repeat">
+                            <div class="wrapper">
+                                <div class="mynav">
+                                    <a href="javascript:;"><span class="lnr lnr-chevron-left"></span></a>
+                                    <a href="javascript:;"><span class="lnr lnr-cog"></span></a>
+                                </div>
+                                <h1 class="heading">{{ citywea.2 }}</h1>
+                                <h3 class="location">{{ city }}</h3>
+                                <p class="temp">
+                                    <span class="temp-value">{{ citywea.1 }}</span>
+                                    <span class="deg">0</span>
+                                    <a href="javascript:;"><span class="temp-type">C</span></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="wrapper">
+                                <ul class="forecast">
+                                    <a href="javascript:;"><span class="lnr lnr-chevron-up go-up"></span></a>
+                                    <li class="active">
+                                        <span class="date">明天天气:</span>
+                                        <span class="lnr lnr-sun condition">
+                                            <span class="temp">{{  citywea.3}}<span class="deg"></span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="date">风力指数:</span>
+                                        <span class="lnr lnr-cloud condition">
+                                            <span class="temp">{{  citywea.4}}<span class="deg">0</span><span class="temp-type">C</span></span>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+    <br class="mb-5">
+
+    <!--Core Javascript -->
+    <script>
+        new Chart(document.getElementById("myChart-nav").getContext('2d'), {
+          type: 'doughnut',
+          data: {
+            labels: ["M", "T", "W", "T", "F", "S", "S"],
+            datasets: [{
+              backgroundColor: [
+                "#2ecc71",
+                "#3498db",
+                "#95a5a6",
+                "#9b59b6",
+                "#f1c40f",
+                "#e74c3c",
+                "#34495e"
+              ],
+              data: [12, 19, 3, 17, 28, 24, 7]
+            }]
+          },
+          options: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: ''
+               } 
+            }
+        });
+    </script>
+{% endblock %}

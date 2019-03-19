@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!--***** PRODUCT INFO *****-->
+    <!--***** FORM LAYOUTS *****-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card form" id="form1">
+                <div class="card-header">
+                    <h3><i class="fa fa-archive"></i> 文章发表 </h3>
+                </div>
+                <br>
+                <form action="../add_article/" method="post">{% csrf_token %}
+                    <div class="row" style="padding-top: 8px;">
+                        <div class="col-md-3" style="margin-left: 19px">
+                            <div class="form-group">
+                                <label for="name"><h5>标题:</h5></label>
+                                <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
+                                       name="Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="pro-qu"><h5>作者:</h5></label>
+                                <input type="text" class="form-control" id="author" aria-describedby="emailHelp"
+                                       value="{{ request.session.user_name }}" name="Author" readonly="readonly">
+                            </div>
+                            <div class="form-group">
+                                <label for="pro-qu"><h5>标签:</h5></label>
+                                <select class="form-control" name="Tag">
+                                    <option>随笔</option>
+                                    <option>旅游</option>
+                                    <option>美食</option>
+                                    <option>文学</option>
+                                    <option>科技</option>
+                                    <option>军事</option>
+                                    <option>社会</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="editormd" class="col-md-8 ">
+                            <textarea style="display:none;" id="id_body" name="Content"></textarea>
+                        </div>
+                        <div class="col-md-3 text-md-center" style="margin-bottom: 5px">
+                            <button type="submit" class="btn btn-general btn-blue mr-2">提交</button>
+                            <button type="reset" class="btn btn-general btn-white">刷新</button>
+                        </div>
+                        <div class="col-md-5 text-md-right">
+                            --- 记录生活美好点滴 ---
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Core Javascript -->
+    <script>
+        new Chart(document.getElementById("myChart-nav").getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ["M", "T", "W", "T", "F", "S", "S"],
+                datasets: [{
+                    backgroundColor: [
+                        "#2ecc71",
+                        "#3498db",
+                        "#95a5a6",
+                        "#9b59b6",
+                        "#f1c40f",
+                        "#e74c3c",
+                        "#34495e"
+                    ],
+                    data: [12, 19, 3, 17, 28, 24, 7]
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: ''
+                }
+            }
+        });
+    </script>
+{% endblock %}

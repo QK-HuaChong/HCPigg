@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/ui-elements/button.css">
+{% endblock %}
+{% block content %}
+    <!--***** FORM LAYOUTS *****-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card form" id="form1">
+                <div class="row" style="padding-top: 8px;">
+                    <div class="col-md-12 ninth-button">
+                    <a href="../article_list/" class="btn blue"><span class="btn-lg">返回上级</span></a>
+                </div>
+                    <div class="col-md-8 text-md-center" style="margin-left: 19px">
+                        <label for="name"><h2>{{ article.0}}</h2></label>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-left: 90px;">
+                    <div id="editormd-view" class="col-md-11">
+                        <textarea style="display:none;" id="append-test">{{ article.1}}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

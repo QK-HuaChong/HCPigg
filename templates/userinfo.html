@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+            <tr class="bg-info text-white">
+                <th>#</th>
+                <th>用户名</th>
+                <th>邮箱</th>
+                <th>性别</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ user.user_name }}</td>
+                    <td>{{ user.user_email }}</td>
+                    <td>
+                        {% if user.user_sex == 'male' %}
+                            男
+                        {% else %}
+                            女
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

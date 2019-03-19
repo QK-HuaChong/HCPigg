@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/ui-elements/button.css">
+{% endblock %}
+{% block content %}
+    <!--***** CONTENT *****-->
+    <div class="card p-4">
+        <div class="row">
+            <hgroup class="mb20">
+                <h1 style="margin:0px 25px 18px 0px">我的文章</h1>
+
+            </hgroup>
+            <div class="col-md-12 tenth-button">
+                <a href="/article/" class="btn btn-lg blue">写文章</a>
+            </div>
+            <section class="col-xs-12 col-sm-6 col-md-12">
+                {% for artlist in article %}
+                    <article class="search-result row">
+                        {#                            <div class="col-xs-12 col-sm-12 col-md-3">#}
+                        {#                                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="img/search/s-1.jpg" class="img-fluid" alt="Lorem ipsum" /></a>#}
+                        {#                            </div>#}
+                        <div class="col-xs-12 col-sm-12 col-md-2">
+                            <ul class="meta-search">
+                                <li><i class="fa fa-user-circle"></i> <span>{{ artlist.arti_author }}</span></li>
+                                <li><i class="fa fa-tags"></i> <span>{{ artlist.arti_tag }}</span></li>
+                                <li><i class="fa fa-calendar"></i>
+                                    <span>{{ artlist.arti_createtime|date:"Y-m-d H:i:s" }}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
+                            <h3><a href="/show_article/?art_no={{ artlist.id }}" title="artnote">{{ artlist.arti_title }}</a></h3>
+                            <p>{{  artlist.arti_content|slice:"100" }}</p>
+                        </div>
+                        <span class="clearfix borda"></span>
+                    </article>
+
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+{% endblock %}

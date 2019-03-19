@@ -1,0 +1,26 @@
+{% extends "login_base.html" %}
+{% block content %}
+    <form action="/login/" method="post">{% csrf_token %}
+        <div class="form-group">
+            {{ login_form.username.label_tag }}
+            {{ login_form.username }}
+        </div>
+        <div class="form-group">
+            {{ login_form.password.label_tag }}
+            {{ login_form.password }}
+        </div>
+        <div class="form-group">
+            {{ login_form.captcha.errors }}
+            {{ login_form.captcha.label_tag }}
+            {{ login_form.captcha }}
+        </div>
+        <button class="btn btn-general btn-blue" role="button"><i fa fa-right-arrow></i>登 陆</button>
+        <button class="btn btn-general btn-gray" type="reset"><i fa fa-right-arrow></i>重 置</button>
+        {% if message %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+    </form>
+    <div class="register_a">
+         <a href="/register/">立即注册</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="" action="/addGame/" method="post">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputName1">游戏名称：</label>
+                        <input type="text" class="form-control" id="exampleInputName1" name="GameName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputAddress1">游戏地址：</label>
+                        <input type="text" class="form-control" id="exampleInputAddress1" name="GameAddress">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCompany1">游戏公司：</label>
+                        <input type="text" class="form-control" id="exampleInputCompany1" name="GameCompany">
+                    </div>
+                    <button type="submit" class="btn btn-success" id="submitBtn">提  交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

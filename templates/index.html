@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="navbar-form pull-right" role="search" action="/search" method="get">
+        <input type="text" class="input-medium search-query" name="txt_search" placeholder="Search">
+        <button type="submit" class="btn btn-info btn-xs">提交</button>
+        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">添加</button>
+        <button type="button" class="btn btn-danger btn-xs" id="addGame">删除</button>
+    </form>
+    {% include "float.html" %}
+    <table class="table table-hover table-striped">
+        <tr class="success">
+            <td>#</td>
+            <td>名称</td>
+            <td>地址</td>
+            <td>公司</td>
+            <td>操作</td>
+        </tr>
+        {% for game in games %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ game.game_name }}</td>
+                <td>{{ game.game_url }}</td>
+                <td>{{ game.game_company }}</td>
+                <td><a class="btn btn-danger btn-sm" style="color: #fff;" href="/dele?gid={{ game.id }}">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

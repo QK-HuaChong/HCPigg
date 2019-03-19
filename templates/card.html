@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row mt-2" id="card-1">
+    {% for new in news %}
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="card card-inverse card-info">
+                <img class="card-img-top" src="{{ new.pic_url }}">
+                <div class="card-block">
+                    <h4 class="card-title">{{ new.pic_title }}</h4>
+                </div>
+                <div class="card-footer">
+                    <small>{{ new.pic_context }}</small>
+                    <audio src="/static/sounds/{{ new.id }}.mp3" controls="controls" preload id="music{{ new.id }}" hidden></audio>
+                    <button class="btn btn-info float-right btn-sm" id="readNews" value="{{ new.id }}" onclick="read({{ new.id }})">阅读</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
